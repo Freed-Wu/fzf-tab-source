@@ -1,0 +1,71 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: check-added-large-files
+      - id: fix-byte-order-marker
+      - id: check-case-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-merge-conflict
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+      - id: end-of-file-fixer
+      - id: detect-private-key
+      - id: check-symlinks
+      - id: check-ast
+      - id: debug-statements
+      - id: requirements-txt-fixer
+      - id: check-xml
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.3.1
+    hooks:
+      - id: remove-crlf
+  - repo: https://github.com/codespell-project/codespell
+    rev: master
+    hooks:
+      - id: codespell
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.17.0
+    hooks:
+      - id: gitlint
+        args:
+          - --msg-filename
+  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+    rev: 2.6.1
+    hooks:
+      - id: editorconfig-checker
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 3.0.0
+    hooks:
+      - id: check-mailmap
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.16
+    hooks:
+      - id: mdformat
+        args:
+          - --number
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-myst
+          - mdformat-tables
+          - mdformat-toc
+          - mdformat-footnote
+          - mdformat-frontmatter
+          - mdformat-deflist
+          - mdformat-beautysh
+          - mdformat-black
+          - mdformat-config
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.5.1
+    hooks:
+      - id: markdownlint-cli2
+        additional_dependencies:
+          - markdown-it-texmath@0.9.1
+  - repo: https://github.com/Freed-Wu/pre-commit-make
+    rev: 0.0.1
+    hooks:
+      - id: make
