@@ -1,6 +1,5 @@
 # fzf-tab-source
 
-[![github/license](https://shields.io/github/license/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/blob/master/LICENSE)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Freed-Wu/fzf-tab-source/main.svg)](https://results.pre-commit.ci/latest/github/Freed-Wu/fzf-tab-source/main)
 
 [![github/downloads](https://shields.io/github/downloads/Freed-Wu/fzf-tab-source/total)](https://github.com/Freed-Wu/fzf-tab-source/releases)
@@ -19,6 +18,7 @@
 [![github/last-commit](https://shields.io/github/last-commit/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/commits)
 [![github/release-date](https://shields.io/github/release-date/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/releases/latest)
 
+[![github/license](https://shields.io/github/license/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/blob/master/LICENSE)
 ![github/languages](https://shields.io/github/languages/count/Freed-Wu/fzf-tab-source)
 ![github/languages/top](https://shields.io/github/languages/top/Freed-Wu/fzf-tab-source)
 ![github/directory-file-count](https://shields.io/github/directory-file-count/Freed-Wu/fzf-tab-source)
