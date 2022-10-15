@@ -161,6 +161,17 @@ zstyle ':fzf-tab:complete:(\\|*/|)(kill|ps):argument-rest' fzf-flags \
 ## ![kill](https://user-images.githubusercontent.com/32936898/195972969-437326bb-4514-4c46-8a55-fe16808a0368.png)
 
 ## ```zsh
+zstyle ':fzf-tab:complete:(\\|*/|)(g|b|d|p|freebsd-|)make:*' fzf-preview \
+  'case "$group" in
+"make target") make -n $word | bat --color=always -plsh;;
+"make variable") make -pq | rg -Ns "^$word = " | bat --color=always -plsh;;
+file) less ${realpath#--*=};;
+esac'
+## ```
+##
+## ![make](https://user-images.githubusercontent.com/32936898/195984087-c802d78f-00ae-4139-904c-74fb668cb844.png)
+
+## ```zsh
 zstyle ':fzf-tab:complete:(\\|*/|)has:*' fzf-preview \
   'case "$group" in
 "external command") has $word;;
@@ -185,12 +196,6 @@ zstyle ':fzf-tab:complete:(\\|*/|)(scp|rsync):*' fzf-preview \
 file) less ${realpath#--*=};;
 user) (($+commands[finger])) && finger $word || pinky $word;;
 *host*) grc --colour=on ping -c1 $word;;
-esac'
-zstyle ':fzf-tab:complete:(\\|*/|)(g|b|d|p|freebsd-|)make:*' fzf-preview \
-  'case "$group" in
-"make target") make -n $word | bat --color=always -plsh;;
-"make variable") make -pq | rg -Ns "^$word = " | bat --color=always -plsh;;
-file) less ${realpath#--*=};;
 esac'
 zstyle ':fzf-tab:complete:(\\|*/|)bat:*' fzf-preview \
   'case "$group" in

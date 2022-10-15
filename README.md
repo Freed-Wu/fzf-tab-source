@@ -1,6 +1,5 @@
 # fzf-tab-source
 
-[![github/license](https://shields.io/github/license/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/blob/master/LICENSE)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Freed-Wu/fzf-tab-source/main.svg)](https://results.pre-commit.ci/latest/github/Freed-Wu/fzf-tab-source/main)
 
 [![github/downloads](https://shields.io/github/downloads/Freed-Wu/fzf-tab-source/total)](https://github.com/Freed-Wu/fzf-tab-source/releases)
@@ -19,6 +18,7 @@
 [![github/last-commit](https://shields.io/github/last-commit/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/commits)
 [![github/release-date](https://shields.io/github/release-date/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/releases/latest)
 
+[![github/license](https://shields.io/github/license/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/blob/master/LICENSE)
 ![github/languages](https://shields.io/github/languages/count/Freed-Wu/fzf-tab-source)
 ![github/languages/top](https://shields.io/github/languages/top/Freed-Wu/fzf-tab-source)
 ![github/directory-file-count](https://shields.io/github/directory-file-count/Freed-Wu/fzf-tab-source)
@@ -192,6 +192,17 @@ zstyle ':fzf-tab:complete:(\\|*/|)(kill|ps):argument-rest' fzf-flags \
 ![kill](https://user-images.githubusercontent.com/32936898/195972969-437326bb-4514-4c46-8a55-fe16808a0368.png)
 
 ```zsh
+zstyle ':fzf-tab:complete:(\\|*/|)(g|b|d|p|freebsd-|)make:*' fzf-preview \
+  'case "$group" in
+"make target") make -n $word | bat --color=always -plsh;;
+"make variable") make -pq | rg -Ns "^$word = " | bat --color=always -plsh;;
+file) less ${realpath#--*=};;
+esac'
+```
+
+![make](https://user-images.githubusercontent.com/32936898/195984087-c802d78f-00ae-4139-904c-74fb668cb844.png)
+
+```zsh
 zstyle ':fzf-tab:complete:(\\|*/|)has:*' fzf-preview \
   'case "$group" in
 "external command") has $word;;
@@ -216,12 +227,6 @@ zstyle ':fzf-tab:complete:(\\|*/|)(scp|rsync):*' fzf-preview \
 file) less ${realpath#--*=};;
 user) (($+commands[finger])) && finger $word || pinky $word;;
 *host*) grc --colour=on ping -c1 $word;;
-esac'
-zstyle ':fzf-tab:complete:(\\|*/|)(g|b|d|p|freebsd-|)make:*' fzf-preview \
-  'case "$group" in
-"make target") make -n $word | bat --color=always -plsh;;
-"make variable") make -pq | rg -Ns "^$word = " | bat --color=always -plsh;;
-file) less ${realpath#--*=};;
 esac'
 zstyle ':fzf-tab:complete:(\\|*/|)bat:*' fzf-preview \
   'case "$group" in
@@ -369,34 +374,3 @@ esac'
 
 unset cmd cmds bin bins
 ```
-
-[![github/license](https://shields.io/github/license/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/blob/master/LICENSE)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Freed-Wu/fzf-tab-source/main.svg)](https://results.pre-commit.ci/latest/github/Freed-Wu/fzf-tab-source/main)
-
-[![github/downloads](https://shields.io/github/downloads/Freed-Wu/fzf-tab-source/total)](https://github.com/Freed-Wu/fzf-tab-source/releases)
-[![github/downloads/latest](https://shields.io/github/downloads/Freed-Wu/fzf-tab-source/latest/total)](https://github.com/Freed-Wu/fzf-tab-source/releases/latest)
-[![github/issues](https://shields.io/github/issues/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/issues)
-[![github/issues-closed](https://shields.io/github/issues-closed/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/issues?q=is%3Aissue+is%3Aclosed)
-[![github/issues-pr](https://shields.io/github/issues-pr/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/pulls)
-[![github/issues-pr-closed](https://shields.io/github/issues-pr-closed/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/pulls?q=is%3Apr+is%3Aclosed)
-[![github/discussions](https://shields.io/github/discussions/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/discussions)
-[![github/milestones](https://shields.io/github/milestones/all/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/milestones)
-[![github/forks](https://shields.io/github/forks/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/network/members)
-[![github/stars](https://shields.io/github/stars/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/stargazers)
-[![github/watchers](https://shields.io/github/watchers/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/watchers)
-[![github/contributors](https://shields.io/github/contributors/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/graphs/contributors)
-[![github/commit-activity](https://shields.io/github/commit-activity/w/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/graphs/commit-activity)
-[![github/last-commit](https://shields.io/github/last-commit/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/commits)
-[![github/release-date](https://shields.io/github/release-date/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/releases/latest)
-
-![github/languages](https://shields.io/github/languages/count/Freed-Wu/fzf-tab-source)
-![github/languages/top](https://shields.io/github/languages/top/Freed-Wu/fzf-tab-source)
-![github/directory-file-count](https://shields.io/github/directory-file-count/Freed-Wu/fzf-tab-source)
-![github/code-size](https://shields.io/github/languages/code-size/Freed-Wu/fzf-tab-source)
-![github/repo-size](https://shields.io/github/repo-size/Freed-Wu/fzf-tab-source)
-![github/v](https://shields.io/github/v/release/Freed-Wu/fzf-tab-source)
-
-This zsh plugin is a collection of
-<https://github.com/Aloxaf/fzf-tab/wiki/Preview>. Please read the wiki first.
-
-**NOTE: Don't edit this file directly!** It is generated by `make`.
