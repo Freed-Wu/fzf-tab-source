@@ -25,9 +25,11 @@ repos:
     hooks:
       - id: remove-crlf
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.1
+    rev: v2.2.2
     hooks:
       - id: codespell
+        additional_dependencies:
+          - tomli
   - repo: https://github.com/jorisroovers/gitlint
     rev: v0.17.0
     hooks:
