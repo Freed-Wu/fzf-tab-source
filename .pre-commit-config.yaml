@@ -67,7 +67,3 @@ repos:
       - id: markdownlint-cli2
         additional_dependencies:
           - markdown-it-texmath@0.9.1
-  - repo: https://github.com/Freed-Wu/pre-commit-make
-    rev: 0.0.1
-    hooks:
-      - id: make
