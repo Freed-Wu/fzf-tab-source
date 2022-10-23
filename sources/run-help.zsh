@@ -2,7 +2,8 @@
 # Note run-help usually is an alias, remember:
 #
 # ```zsh
-# (($+aliases[run-help])) && unalias run-help
+# (($+aliases[run-help]))
+    && unalias run-help
 # autoload -Uz run-help
 # ```
 run-help $word

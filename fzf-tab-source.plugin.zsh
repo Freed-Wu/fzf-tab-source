@@ -5,7 +5,7 @@
 # use a standalone script to get syntax highlight
 # built-in commands and aliases should start with `(\\|)` to support `\command`
 # commands should start with `(\\|*/|)` to support `=commmand`
-local dir=$(dirname $0) src line arr ctx flags
+local dir=${0:h} src line arr ctx flags
 for src in $dir/sources/*.zsh ; do
   while read -r line; do
     arr=(${(@s. .)line##\# })
@@ -14,9 +14,7 @@ for src in $dir/sources/*.zsh ; do
       break
     fi
   done < $src
-  # dictionary $ZINIT cannot be passed
-  zstyle $ctx fzf-preview \
-    ". $dir/functions/helper.zsh && PLUGINS_DIR=${ZINIT[PLUGINS_DIR]} . $src"
+  zstyle $ctx fzf-preview ". $dir/functions/helper.zsh && . $src"
   flags=${arr[2]}
   if [[ -n $flags ]]; then
     zstyle $ctx fzf-flags $flags

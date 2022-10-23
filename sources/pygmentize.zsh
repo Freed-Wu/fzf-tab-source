@@ -1,2 +1,8 @@
-# :fzf-tab:complete:(\\|*/|)pygmentize:option-L-1
-pygmentize -L $word | bat --color=always -plrst
+# :fzf-tab:complete:(\\|*/|)pygmentize:*
+case $group in
+  L)
+    pygmentize -L $word | bat --color=always -plrst
+  *)
+    [[ -f ${realpath#--*=} ]] && pygmentize ${realpath#--*=} || less ${realpath#--*=}
+    ;;
+esac
