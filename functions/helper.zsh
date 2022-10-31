@@ -3,6 +3,7 @@
 (($+commands[delta])) || delta() {cat}
 (($+commands[less])) || less() {ls -l}
 (($+commands[finger])) || finger() {(($+commands[pinky])) && pinky $@ || whoami}
+(($+commands[pandoc])) || pandoc() {cat ${@[-1]}}
 (($+commands[grc])) || grc() {eval ${@[2,-1]}}
 
 # dictionary $ZINIT cannot be passed

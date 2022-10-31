@@ -1,4 +1,4 @@
-# :fzf-tab:complete:-command-:
+# :fzf-tab:complete:(-command-:|command:option-(v|V)-rest)
 case $group in
   'external command')
     less =$word
