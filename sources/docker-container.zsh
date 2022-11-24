@@ -1,2 +1,2 @@
-# :fzf-tab:complete:docker-container:argument-rest
-docker container ls $word
+# :fzf-tab:complete:docker-container:argument-1
+docker container $word --help | bat --color=always -plhelp

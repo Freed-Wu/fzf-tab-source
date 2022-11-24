@@ -1,2 +1,2 @@
-# :fzf-tab:complete:(\\|*/|)nix:argument-1
+# :fzf-tab:complete:(\\|*/|)nix:
 nix help $word | bat --color=always -plhelp

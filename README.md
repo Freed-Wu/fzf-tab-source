@@ -63,3 +63,5 @@ preview directory, text, image, etc better.**
 ![git log](https://user-images.githubusercontent.com/32936898/195972831-86ff5c74-e18e-41a0-99d8-8b7679930e98.png)
 
 ![systemctl](https://user-images.githubusercontent.com/32936898/195973059-ab426a65-2e04-4e5a-8474-d201a6644adb.png)
+
+![adb](https://user-images.githubusercontent.com/32936898/203727602-e33b617d-a218-435e-8f8a-585e7679857f.jpg)
