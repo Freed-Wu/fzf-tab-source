@@ -11,4 +11,5 @@ case $group in
     ;;
   parameter)
     echo ${(P)word}
+    ;;
 esac
