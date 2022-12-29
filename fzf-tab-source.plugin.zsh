@@ -2,11 +2,18 @@
 0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
 0="${${(M)0:#/*}:-$PWD/$0}"
 
+# config
+zstyle -s ':fzf-tab:sources' config-directory config_directory
+local sources=()
+if [[ -n $config_directory ]]; then
+  sources=($config_directory/**/*.zsh(.N))
+fi
+
 # use a standalone script to get syntax highlight
 # built-in commands and aliases should start with `(\\|)` to support `\command`
 # commands should start with `(\\|*/|)` to support `=commmand`
 local dir=${0:h} src line arr ctx flags
-for src in $dir/sources/*.zsh ; do
+for src in $dir/sources/*.zsh $sources; do
   while read -r line; do
     arr=(${(@s. .)line##\# })
     ctx=${arr[1]}

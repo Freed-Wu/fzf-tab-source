@@ -1,7 +1,7 @@
 ---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.4.0
     hooks:
       - id: check-added-large-files
       - id: fix-byte-order-marker
@@ -31,19 +31,23 @@ repos:
         additional_dependencies:
           - tomli
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.17.0
+    rev: v0.18.0
     hooks:
       - id: gitlint
         args:
           - --msg-filename
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev: 2.6.1
+    rev: 2.6.2
     hooks:
       - id: editorconfig-checker
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: 3.0.0
     hooks:
       - id: check-mailmap
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.28.0
+    hooks:
+      - id: yamllint
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
     hooks:
@@ -51,12 +55,8 @@ repos:
         args:
           - --number
         additional_dependencies:
-          - mdformat-gfm
           - mdformat-myst
-          - mdformat-tables
           - mdformat-toc
-          - mdformat-footnote
-          - mdformat-frontmatter
           - mdformat-deflist
           - mdformat-beautysh
           - mdformat-black
