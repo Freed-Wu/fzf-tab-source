@@ -1,3 +1,3 @@
 # :fzf-tab:complete:(\\|*/|)gio:
-[[ -f $realpath ]] && less $realpath \
-  || gio help $word 2>&1 | bat --color=always -plhelp
+[[ -f $realpath ]] && less $realpath ||
+  gio help $word 2>&1 | bat --color=always -plhelp

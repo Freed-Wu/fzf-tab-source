@@ -18,7 +18,7 @@
 [![github/last-commit](https://shields.io/github/last-commit/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/commits)
 [![github/release-date](https://shields.io/github/release-date/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/releases/latest)
 
-[![github/license](https://shields.io/github/license/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/blob/master/LICENSE)
+[![github/license](https://shields.io/github/license/Freed-Wu/fzf-tab-source)](https://github.com/Freed-Wu/fzf-tab-source/blob/main/LICENSE)
 ![github/languages](https://shields.io/github/languages/count/Freed-Wu/fzf-tab-source)
 ![github/languages/top](https://shields.io/github/languages/top/Freed-Wu/fzf-tab-source)
 ![github/directory-file-count](https://shields.io/github/directory-file-count/Freed-Wu/fzf-tab-source)
@@ -27,7 +27,23 @@
 ![github/v](https://shields.io/github/v/release/Freed-Wu/fzf-tab-source)
 
 This zsh plugin is a collection of
-<https://github.com/Aloxaf/fzf-tab/wiki/Preview>. Please read the wiki first.
+[fzf-tab](https://github.com/Aloxaf/fzf-tab)'s sources. Please read
+[the wiki](https://github.com/Aloxaf/fzf-tab/wiki/Preview) first.
+
+## Install
+
+This plugin respects
+[zsh plugin standard](https://github.com/zdharma-continuum/Zsh-100-Commits-Club/blob/master/Zsh-Plugin-Standard.adoc),
+so if you use any plugin manager and follow the instructions of your plugin
+manager, it can be installed correctly.
+
+If you don't use any plugin manager, just add the following code to `~/.zshrc`:
+
+```zsh
+source /the/directory/of/this/plugin/*.plugin.zsh
+```
+
+## Customize
 
 You can use your customized fzf-tab sources to override the default, such as:
 
@@ -35,16 +51,26 @@ You can use your customized fzf-tab sources to override the default, such as:
 zstyle ':fzf-tab:sources' config-directory /the/directory/containing/your/source.zsh
 ```
 
-**NOTE: You need to install [lesspipe](https://github.com/wofr06/lesspipe) to
-preview directory, text, image, etc better.**
+## Optional Dependencies
+
+- [some programs](functions/helper.zsh).
+- [lesspipe](https://github.com/wofr06/lesspipe): preview directory, text,
+  image, etc better. You need to write your `~/.lessfilter` to customize
+  `lesspipe`. My
+  [~/.lessfilter](https://github.com/Freed-Wu/my-dotfiles/blob/main/.lessfilter)
+  can be a reference.
+- [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli): `gitmoji -u` to
+  download `~/.gitmoji`
+- [pinyin-completion](https://github.com/petronny/pinyin-completion): complete
+  pinyin in your zsh.
+
+## Preview
 
 ![dir](https://user-images.githubusercontent.com/32936898/195973421-24f28667-3754-46f2-9dd4-42523285aec2.png)
 
 ![text](https://user-images.githubusercontent.com/32936898/195970444-4220411d-5a11-4b60-a19f-a8839d827711.png)
 
 ![image](https://user-images.githubusercontent.com/32936898/195970442-1ca8db87-fcb2-469e-8578-163ea73a19ff.png)
-
-**NOTE: You need to install [pinyin-completion](https://github.com/petronny/pinyin-completion).**
 
 ![user-expand](https://user-images.githubusercontent.com/32936898/195970438-1282c11b-c2e4-455e-8a6a-76c7446ecf8b.png)
 

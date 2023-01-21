@@ -1,2 +1,7 @@
-# :fzf-tab:complete:(\\|*/|)(pydoc|python):*
-[[ $word != -* ]] && pydoc $word | bat --color=always -plman
+# :fzf-tab:complete:(\\|*/|)pydoc:argument-rest
+case $group in
+option) ;;
+*)
+  pydoc $word | bat --color=always -plman
+  ;;
+esac

@@ -1,6 +1,6 @@
 # :fzf-tab:complete:(\\|*/|)cowsay:
 case $group in
-  'cow file')
-    cowsay -f $word hello
-    ;;
+'cow file')
+  cowsay -f $word hello
+  ;;
 esac
