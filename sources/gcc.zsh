@@ -1,2 +1,9 @@
-# :fzf-tab:complete:(\\|*/|):gcc:argument-rest
-gcc -o- -S $realpath | bat --color=always -plasm
+# :fzf-tab:complete:(\\|*/|)gcc:*
+case $group in
+'input file')
+  gcc -o- -S $realpath | bat --color=always -plasm
+  ;;
+help)
+  gcc --help=$word | bat --color=always -plhelp
+  ;;
+esac

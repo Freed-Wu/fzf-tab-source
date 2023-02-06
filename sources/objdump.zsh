@@ -1,2 +1,2 @@
 # :fzf-tab:complete:(\\|*/|)objdump:argument-rest
-objdump -d $realpath
+objdump -dhl --disassembler-color=extended-color --visualize-jumps=extended-color $realpath

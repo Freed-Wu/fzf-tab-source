@@ -1,2 +1,2 @@
 # :fzf-tab:complete:(\\|*/|)nm:argument-rest
-nm $realpath
+nm --demangle $realpath

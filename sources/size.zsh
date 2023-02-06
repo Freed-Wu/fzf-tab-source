@@ -1,2 +1,2 @@
-# :fzf-tab:complete:(\\|*/|)size:argument-rest
-size $realpath
+# :fzf-tab:complete:(\\|*/|)size:
+size -t $realpath

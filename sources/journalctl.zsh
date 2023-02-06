@@ -1,4 +1,4 @@
-# :fzf-tab:complete:(\\|*/|)journalctl:values
+# :fzf-tab:complete:(\\|*/|)journalctl:*
 case $group in
 'boot '*)
   journalctl -b $word | bat --color=always -pllog
@@ -8,5 +8,8 @@ case $group in
   ;;
 commands)
   journalctl $word | bat --color=always -pllog
+  ;;
+'possible values')
+  journalctl -u $word | bat --color=always -pllog
   ;;
 esac
