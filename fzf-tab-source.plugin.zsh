@@ -21,7 +21,7 @@ for src in $dir/sources/*.zsh $sources; do
       break
     fi
   done < $src
-  zstyle $ctx fzf-preview ". $dir/functions/helper.zsh && . $src"
+  zstyle $ctx fzf-preview "src="\""$src"\"" . "\""$dir"\""/functions/main.zsh"
   flags=${arr[2]}
   if [[ -n $flags ]]; then
     zstyle $ctx fzf-flags $flags
