@@ -21,7 +21,7 @@ repos:
       - id: check-toml
       - id: check-json
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.4.2
+    rev: v1.5.1
     hooks:
       - id: remove-crlf
   - repo: https://github.com/codespell-project/codespell
@@ -45,16 +45,15 @@ repos:
     hooks:
       - id: check-mailmap
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.30.0
+    rev: v1.32.0
     hooks:
       - id: yamllint
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
     hooks:
       - id: mdformat
-        args:
-          - --number
         additional_dependencies:
+          - mdformat-pyproject
           - mdformat-gfm
           - mdformat-myst
           - mdformat-toc
@@ -63,7 +62,7 @@ repos:
           - mdformat-black
           - mdformat-config
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.6.0
+    rev: v0.7.1
     hooks:
       - id: markdownlint-cli2
         additional_dependencies:
