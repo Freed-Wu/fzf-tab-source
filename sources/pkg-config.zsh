@@ -1,7 +1,7 @@
 # :fzf-tab:complete:(\\|*/|)pkg-config:argument-rest
 case $group in
 package)
-  less /usr/(lib|share)/pkgconfig/$word.pc
+  less "$(pkg-config --variable=pcfiledir $word)/$word.pc"
   ;;
 'package file')
   less ${realpath#--*=}
