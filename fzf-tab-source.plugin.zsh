@@ -11,7 +11,7 @@ fi
 
 # use a standalone script to get syntax highlight
 # built-in commands and aliases should start with `(\\|)` to support `\command`
-# commands should start with `(\\|*/|)` to support `=commmand`
+# commands should start with `(\\|*/|)` to support `=command`
 local dir=${0:h} src line arr ctx flags
 for src in $dir/sources/*.zsh $sources; do
   while read -r line; do
