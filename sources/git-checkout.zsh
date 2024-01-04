@@ -5,11 +5,11 @@ case $group in
   ;;
 'recent commit object name')
   git log --color=always $word |
-    perl -pe' '$(jq -j '.[] | "s=\(.code)=\(.emoji)=g;"' ~/.gitmoji/gitmojis.json) |
+    perl -pe' '$([ -f ~/.gitmoji/gitmojis.json ] && ${src:h:h}/bin/gitmoji.jq ~/.gitmoji/gitmojis.json || :) |
     delta
   ;;
 *)
   git log --color=always $word |
-    perl -pe' '$(jq -j '.[] | "s=\(.code)=\(.emoji)=g;"' ~/.gitmoji/gitmojis.json)
+    perl -pe' '$([ -f ~/.gitmoji/gitmojis.json ] && ${src:h:h}/bin/gitmoji.jq ~/.gitmoji/gitmojis.json || :)
   ;;
 esac

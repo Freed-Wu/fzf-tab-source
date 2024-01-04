@@ -13,9 +13,6 @@
 (($+commands[grc])) || grc() {eval ${@[2,-1]}}
 (($+commands[jq])) || jq() {echo ';'}
 
-mkdir -p ~/.gitmoji
-touch ~/.gitmoji/gitmojis.json
-
 # dictionary $ZINIT cannot be passed
 PLUGINS_DIR=${ZINIT[PLUGINS_DIR]}
 
