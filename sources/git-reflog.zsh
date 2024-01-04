@@ -1,7 +1,7 @@
 # :fzf-tab:complete:git-reflog(|-*):argument-1
 case $group in
 command)
-  git reflog --color=always show |
+  git reflog --color=always |
     perl -pe' '$(jq -j '.[] | "s=\(.code)=\(.emoji)=g;"' ~/.gitmoji/gitmojis.json)
   ;;
 reference)
