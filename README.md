@@ -53,14 +53,12 @@ zstyle ':fzf-tab:sources' config-directory /the/directory/containing/your/source
 
 ## Optional Dependencies
 
-- [some programs](functions/helper.zsh).
+- [some programs](functions/main.zsh).
 - [lesspipe](https://github.com/wofr06/lesspipe): preview directory, text,
   image, etc better. You need to write your `~/.lessfilter` to customize
   `lesspipe`. My
   [~/.lessfilter](https://github.com/Freed-Wu/my-dotfiles/blob/main/.lessfilter)
   can be a reference.
-- [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli): `gitmoji -u` to
-  download `~/.gitmoji`
 - [pinyin-completion](https://github.com/petronny/pinyin-completion): complete
   pinyin in your zsh.
 
