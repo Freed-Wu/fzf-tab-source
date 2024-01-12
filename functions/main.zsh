@@ -1,7 +1,10 @@
 # define some functions to avoid any error that these programs don't exist
-(($+commands[bat])) || bat() {command cat $@}
-(($+commands[mdcat])) || mdcat() {command cat $@}
-(($+commands[pygmentize])) || pygmentize() {command cat $@}
+# treat bat -lXXX as cat
+(($+commands[bat])) || bat() {command cat}
+# pygmentize -lXXX
+# bat -lXXX
+(($+commands[pygmentize])) || pygmentize() {bat $@}
+(($+commands[mdcat])) || mdcat() {bat -lmarkdown}
 # https://github.com/Freed-Wu/fzf-tab-source/issues/6
 (($+commands[less])) && [ -x ~/.lessfilter ] &&
   less() {~/.lessfilter $@ || command less $@} || (($+commands[less])) ||
