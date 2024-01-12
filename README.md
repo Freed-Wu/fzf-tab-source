@@ -107,7 +107,9 @@ You can install some tools to view images, such as:
 
 ![image](https://user-images.githubusercontent.com/32936898/195970442-1ca8db87-fcb2-469e-8578-163ea73a19ff.png)
 
-My [~/.lessfilter](https://github.com/Freed-Wu/my-dotfiles/blob/main/.lessfilter) can be a reference.
+My
+[~/.lessfilter](https://github.com/Freed-Wu/my-dotfiles/blob/main/.lessfilter)
+can be a reference.
 
 ### pinyin
 
