@@ -1,2 +1,2 @@
 # :fzf-tab:complete:git-log:argument-1
-git log --color=always
+git log --color=always $word

@@ -4,9 +4,9 @@ case $group in
   git diff $word
   ;;
 'recent commit object name')
-  git log --color=always | eval $(git config --global pager.diff || echo cat)
+  git log --color=always $word | eval $(git config --global pager.diff || echo cat)
   ;;
 *)
-  git log --color=always
+  git log --color=always $word
   ;;
 esac

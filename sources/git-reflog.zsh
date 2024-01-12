@@ -4,6 +4,6 @@ command)
   git reflog --color=always
   ;;
 reference)
-  git reflog --color=always
+  git reflog --color=always $word
   ;;
 esac
