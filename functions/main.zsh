@@ -9,8 +9,9 @@
 (($+commands[less])) && [ -x ~/.lessfilter ] &&
   less() {~/.lessfilter $@ || command less $@} || (($+commands[less])) ||
     less() {command ls -l $@}
-(($+commands[finger])) || (($+commands[pinky])) &&
-  finger() {command pinky $@} || finger() {command whoami}
+if ((! $+commands[finger])); then
+  (($+commands[pinky])) && finger() {command pinky $@} || finger() {command whoami}
+fi
 (($+commands[pandoc])) || pandoc() {command cat ${@[-1]}}
 (($+commands[grc])) || grc() {eval ${@[2,-1]}}
 
