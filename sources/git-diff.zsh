@@ -4,6 +4,6 @@ case $group in
   less ${realpath#--*=}
   ;;
 *)
-  git diff $word | delta
+  git diff $word | eval $(git config --global pager.diff || echo less)
   ;;
 esac
