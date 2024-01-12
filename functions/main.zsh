@@ -12,6 +12,10 @@
 (($+commands[grc])) || grc() {eval ${@[2,-1]}}
 (($+commands[jq])) || jq() {echo ';'}
 
+(($+commands[git])) && git() {
+    command git $@ | eval $(command git config --global pager.$1 || echo cat)
+  }
+
 # dictionary $ZINIT cannot be passed
 PLUGINS_DIR=${ZINIT[PLUGINS_DIR]}
 
