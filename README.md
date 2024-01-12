@@ -43,6 +43,8 @@ If you don't use any plugin manager, just add the following code to `~/.zshrc`:
 source /the/directory/of/this/plugin/*.plugin.zsh
 ```
 
+**NOTE**: Don't source `*.zsh`! They will be sourced by `*.plugin.zsh` automatically.
+
 ## Customize
 
 You can use your customized fzf-tab sources to override the default, such as:
@@ -51,47 +53,161 @@ You can use your customized fzf-tab sources to override the default, such as:
 zstyle ':fzf-tab:sources' config-directory /the/directory/containing/your/source.zsh
 ```
 
-## Optional Dependencies
-
-- [some programs](functions/main.zsh).
-- [lesspipe](https://github.com/wofr06/lesspipe): preview directory, text,
-  image, etc better. You need to write your `~/.lessfilter` to customize
-  `lesspipe`. My
-  [~/.lessfilter](https://github.com/Freed-Wu/my-dotfiles/blob/main/.lessfilter)
-  can be a reference.
-- [pinyin-completion](https://github.com/petronny/pinyin-completion): complete
-  pinyin in your zsh.
-
 ## Preview
+
+You need [some tools](functions/main.zsh) to view code, render markdown,
+etc.
+
+### less
+
+This plugin uses `less` to display any file. `less` can be configured by
+the environment variable `LESSOPEN`.
+
+```sh
+$ echo $LESSOPEN
+|/usr/bin/lesspipe %s
+```
+
+_NOTE_: in some GNU/Linux distributions, it's `lesspipe.sh` or other names.
+
+[lesspipe](https://github.com/wofr06/lesspipe) is a script to select
+different tool for different kind of file.
+You can write your `~/.lessfilter` to customize
+lesspipe. For example:
+
+[lesspipe selects `ls` to display
+a directory](https://github.com/wofr06/lesspipe/pull/107).
+You can install some tools to view directories, such as:
+
+- [eza](https://github.com/eza-community/eza): written in rust
+- [lsd](https://github.com/lsd-rs/lsd): written in rust
+- [colorls](https://github.com/athityakumar/colorls): written in ruby
 
 ![dir](https://user-images.githubusercontent.com/32936898/195973421-24f28667-3754-46f2-9dd4-42523285aec2.png)
 
+You can install some tools to view code, such as:
+
+- [syncat](https://github.com/foxfriends/syncat): use
+  [tree sitter](https://github.com/tree-sitter/tree-sitter)
+- [bat](https://github.com/sharkdp/bat): use
+  [sublime syntax](https://www.sublimetext.com/docs/syntax.html)
+- [pygmentize](https://github.com/pygments/pygments): use python
+- [rouge](https://github.com/rouge-ruby/rouge): use ruby
+
 ![text](https://user-images.githubusercontent.com/32936898/195970444-4220411d-5a11-4b60-a19f-a8839d827711.png)
+
+[lesspipe doesn't display image](https://github.com/wofr06/lesspipe/pull/106).
+You can install some tools to view images, such as:
+
+- [chafa](https://github.com/hpjansson/chafa): written in C
+- [catimg](https://github.com/posva/catimg): written in C
+- [timg](https://github.com/hzeller/timg): written in C++
+- [tiv](https://github.com/radare/tiv): written in Vala
+- [plotext](https://github.com/piccolomo/plotext): written in python
 
 ![image](https://user-images.githubusercontent.com/32936898/195970442-1ca8db87-fcb2-469e-8578-163ea73a19ff.png)
 
+My [~/.lessfilter](https://github.com/Freed-Wu/my-dotfiles/blob/main/.lessfilter) can be a reference.
+
+### pinyin
+
+[pinyin-completion](https://github.com/petronny/pinyin-completion): complete
+pinyin in your zsh.
+
+This plugin also uses `less` to view the completion results of pinyin-completion.
+
 ![user-expand](https://user-images.githubusercontent.com/32936898/195970438-1282c11b-c2e4-455e-8a6a-76c7446ecf8b.png)
+
+### zsh
 
 ![-parameter-](https://user-images.githubusercontent.com/32936898/195970440-98a83556-e664-42e6-9adb-918b865053f3.png)
 
+This plugin uses any one of the following tools to display user information:
+
+- `finger`
+- `pinky`
+
 ![-tilde-](https://user-images.githubusercontent.com/32936898/195971353-54ff0bd0-31e7-4bb0-bd88-1107f63a5751.png)
+
+This plugin also uses `less` to view commands. `lesspipe` uses `ldd` to view
+binary programs.
 
 ![-command-](https://user-images.githubusercontent.com/32936898/195971354-0a9e3228-96d9-4f94-ae58-265ca0709787.png)
 
 ![bindkey](https://user-images.githubusercontent.com/32936898/195971356-78d0e417-428c-481a-8c96-345d5d73be14.png)
 
+### zinit
+
+[zinit](https://github.com/zdharma-continuum/zinit) is a zsh plugin manager.
+Preview every zsh plugin's `README.md`.
+
 ![zinit](https://user-images.githubusercontent.com/32936898/195971845-006f9b46-0685-4c53-aef8-ab50b0038dfe.png)
+
+### hexyl
+
+Other tools which can display binary files are supported, too:
+
+- `od`
+- `xxd`
 
 ![hexyl](https://user-images.githubusercontent.com/32936898/195972152-d0130d58-afd4-431c-8e9a-d1777e885257.png)
 
+### git
+
 ![git](https://user-images.githubusercontent.com/32936898/195972427-1abb643e-7a3e-4571-b9c3-e4dd911cf4e5.png)
+
+This plugin uses your git's pagers to view the outputs of some git command.
+
+For example, by default:
+
+```sh
+$ git log --oneline
+3ee9df0 :heavy_plus_sign: Add emojify
+d74f60a :sparkles: Add sysctl, lsof, arp, netstat, ss, archlinux-java, coredumpctl
+592d286 :pencil2: Fix a typo about command
+4dd0c69 :children_crossing: Fix #8, don't mkdir ~/.gitmoji
+```
+
+You can install [`emojify`](https://github.com/mrowa44/emojify) then:
+
+```sh
+git config --global pager.log emojify
+```
+
+```sh
+$ git log --oneline
+3ee9df0 ➕ Add emojify
+d74f60a ✨ Add sysctl, lsof, arp, netstat, ss, archlinux-java, coredumpctl
+592d286 ✏️ Fix a typo about command
+4dd0c69 🚸 Fix #8, don't mkdir ~/.gitmoji
+```
+
+![git log](https://github.com/Freed-Wu/fzf-tab-source/assets/32936898/5f73c9ce-6025-463d-a2f2-2239baee7179)
+
+My
+[~/.config/git/config](https://github.com/Freed-Wu/my-dotfiles/blob/main/.config/git/config)
+can be a reference.
+
+### kill
+
+Preview which command will be killed after `kill XXX`.
 
 ![kill](https://user-images.githubusercontent.com/32936898/195972969-437326bb-4514-4c46-8a55-fe16808a0368.png)
 
+### make
+
+Preview which command will be executed after `make XXX`.
+
 ![make](https://user-images.githubusercontent.com/32936898/195984087-c802d78f-00ae-4139-904c-74fb668cb844.png)
 
-![git log](https://user-images.githubusercontent.com/32936898/195972831-86ff5c74-e18e-41a0-99d8-8b7679930e98.png)
+### systemctl
 
 ![systemctl](https://user-images.githubusercontent.com/32936898/195973059-ab426a65-2e04-4e5a-8474-d201a6644adb.png)
+
+### adb
+
+We cannot ensure any program (`eza`, etc) are installed in other machine
+(Android). This plugin uses Android's `ls` to display directory and `cat` to
+display text.
 
 ![adb](https://user-images.githubusercontent.com/32936898/203727602-e33b617d-a218-435e-8f8a-585e7679857f.jpg)
