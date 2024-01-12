@@ -1,6 +1,6 @@
 # :fzf-tab:complete:(\\|*/|)sysctl:argument-rest
 case $group in
   'sysctl variable')
-    sysctl $realpath | bat --color=always -pltoml
+    sysctl $realpath | bat -ltoml
     ;;
 esac

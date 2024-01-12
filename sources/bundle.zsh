@@ -1,2 +1,2 @@
 # :fzf-tab:complete:(\\|*/|)bundle:values
-bundle help $word | bat --color=always -plhelp
+bundle help $word | bat -lhelp

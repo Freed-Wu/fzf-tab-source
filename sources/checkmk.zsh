@@ -1,3 +1,3 @@
 # :fzf-tab:complete:(\\|*/|)checkmk:
-[[ -f $realpath ]] && checkmk $realpath | bat --color=always -plc ||
+[[ -f $realpath ]] && checkmk $realpath | bat -lc ||
   less $realpath

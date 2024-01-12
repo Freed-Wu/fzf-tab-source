@@ -2,6 +2,6 @@
 case $group in
 option) ;;
 *)
-  pydoc $word | bat --color=always -plman
+  pydoc $word | bat -lman
   ;;
 esac

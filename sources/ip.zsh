@@ -4,6 +4,6 @@ case $group in
   grc --colour=on ip $word
   ;;
 *' command')
-  ip ${group%% *} help 2>&1 | bat --color=always -plhelp
+  ip ${group%% *} help 2>&1 | bat -lhelp
   ;;
 esac

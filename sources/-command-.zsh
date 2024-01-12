@@ -7,7 +7,7 @@ case $group in
   less ${realpath#--*=}
   ;;
 'builtin command')
-  run-help $word | bat --color=always -plman
+  run-help $word | bat -lman
   ;;
 parameter)
   echo ${(P)word}

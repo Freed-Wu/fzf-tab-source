@@ -4,9 +4,9 @@ case $group in
   less $realpath
   ;;
 (('installed '|)package|'local packages'))
-  pacman -Qi $word | bat --color=always -plyaml
+  pacman -Qi $word | bat -lyaml
   ;;
 packages)
-  pacman -Si $word | bat --color=always -plyaml
+  pacman -Si $word | bat -lyaml
   ;;
 esac

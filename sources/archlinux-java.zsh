@@ -4,6 +4,6 @@ case $word in
     archlinux-java $word
     ;;
   help)
-    archlinux-java $word | bat --color=always -pplhelp
+    archlinux-java $word | bat -plhelp
     ;;
 esac

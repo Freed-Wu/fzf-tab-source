@@ -2,7 +2,7 @@
 (($+commands[jq])) && view_json() {
     ${src:h:h}/bin/nix-env.jq | mdcat
   } || view_json() {
-      bat --color=always -pljson
+      bat -ljson
     }
 
 case $group in

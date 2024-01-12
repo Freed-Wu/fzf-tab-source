@@ -2,7 +2,7 @@
 case $group in
   option)
     [[ $word == -(h|-help) ]] &&
-      ss $word | bat --color=always -plhelp ||
+      ss $word | bat -lhelp ||
       grc --colour=on ss $word
     ;;
 esac

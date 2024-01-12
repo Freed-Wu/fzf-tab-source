@@ -1,2 +1,2 @@
 # :fzf-tab:complete:systemctl-cat:*
-systemctl cat $word | bat --color=always -plini
+systemctl cat $word | bat -lini
