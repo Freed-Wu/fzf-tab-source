@@ -1,13 +1,18 @@
 # :fzf-tab:complete:(\\|*/|)nix-env:*
+(($+commands[jq])) && view_json() {
+    ${src:h:h}/bin/nix-env.jq | mdcat
+  } || view_json() {
+      bat --color=always -pljson
+    }
+
 case $group in
 'Attribute path')
-  nix-env -qa --out-path --json --meta -A $ctxt[hpre]$word |
-    ${src:h:h}/bin/nix-env.jq | mdcat
+  nix-env -qa --out-path --json --meta -A $ctxt[hpre]$word | view_json
   ;;
 'Installed package'*)
-  nix-env -q --out-path --json --meta $word | ${src:h:h}/bin/nix-env.jq | mdcat
+  nix-env -q --out-path --json --meta $word | view_json
   ;;
-'Local file')
+'Store path to package')
   less $realpath
   ;;
 esac

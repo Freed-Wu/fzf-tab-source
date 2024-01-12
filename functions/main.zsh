@@ -10,7 +10,6 @@
   finger() {command pinky $@} || finger() {command whoami}
 (($+commands[pandoc])) || pandoc() {command cat ${@[-1]}}
 (($+commands[grc])) || grc() {eval ${@[2,-1]}}
-(($+commands[jq])) || jq() {echo ';'}
 
 (($+commands[git])) && git() {
     command git $@ | eval $(command git config --global pager.$1 || echo cat)
