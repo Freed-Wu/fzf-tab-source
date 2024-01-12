@@ -6,9 +6,11 @@
 (($+commands[pygmentize])) || pygmentize() {bat $@}
 (($+commands[mdcat])) || mdcat() {bat -lmarkdown}
 # https://github.com/Freed-Wu/fzf-tab-source/issues/6
-(($+commands[less])) && [ -x ~/.lessfilter ] &&
-  less() {~/.lessfilter $@ || command less $@} || (($+commands[less])) ||
-    less() {command ls -l $@}
+if (($+commands[less])) && [ -x ~/.lessfilter ]; then
+  less() {~/.lessfilter $@ || command less $@}
+else
+  (($+commands[less])) || less() {command ls -l $@}
+fi
 if ((! $+commands[finger])); then
   (($+commands[pinky])) && finger() {command pinky $@} || finger() {command whoami}
 fi
