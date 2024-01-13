@@ -55,8 +55,15 @@ zstyle ':fzf-tab:sources' config-directory /the/directory/containing/your/source
 
 ## Preview
 
-You need [some tools](functions/main.zsh) to view code, render markdown,
-etc.
+You need some optional tools:
+
+- [bat](https://github.com/sharkdp/bat): view code
+- [pandoc](https://github.com/jgm/pandoc): convert any kind of file to
+  markdown. Any generated cache file will be store in same
+  `/tmp/zsh-fzf-tab-$USER` as [fzf-tab](https://github.com/Aloxaf/fzf-tab)
+- [mdcat](https://github.com/swsnr/mdcat): render markdown
+- [grc](https://github.com/garabik/grc): colorize the output of some commands
+- [less](https://github.com/vbwagner/less): a pager
 
 ### less
 
