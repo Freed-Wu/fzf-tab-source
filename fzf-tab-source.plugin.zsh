@@ -9,6 +9,10 @@ if [[ -n $config_directory ]]; then
   sources=($config_directory/**/*.zsh(.N))
 fi
 
+# https://github.com/Freed-Wu/fzf-tab-source/issues/11
+# enable $group
+zstyle ':completion:*:descriptions' format %d
+
 # use a standalone script to get syntax highlight
 # built-in commands and aliases should start with `(\\|)` to support `\command`
 # commands should start with `(\\|*/|)` to support `=command`
