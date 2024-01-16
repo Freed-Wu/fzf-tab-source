@@ -16,8 +16,9 @@ else
   (($+commands[less])) || less() {command ls -l $@}
 fi
 
+# use pager to process the output of git
 (($+commands[git])) && git() {
-    command git $@ | eval $(command git config --global pager.$1 || echo cat)
+    command git $@ | eval $(command git config pager.$1 || echo cat)
   }
 
 # dictionary $ZINIT cannot be passed
