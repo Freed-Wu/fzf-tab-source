@@ -22,7 +22,5 @@ fi
   }
 
 tmp_dir=${TMPPREFIX:-/tmp/zsh}-fzf-tab-$USER
-# dictionary $ZINIT cannot be passed
-PLUGINS_DIR=${ZINIT[PLUGINS_DIR]}
 
 . $src
