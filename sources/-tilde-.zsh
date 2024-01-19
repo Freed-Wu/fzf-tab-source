@@ -1,2 +1,6 @@
 # :fzf-tab:complete:-tilde-:
-finger $word
+case $group in
+user)
+  finger $word
+  ;;
+esac
