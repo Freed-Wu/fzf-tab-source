@@ -23,4 +23,8 @@ fi
 
 tmp_dir=${TMPPREFIX:-/tmp/zsh}-fzf-tab-$USER
 
+# https://bixense.com/clicolors/
+export CLICOLOR_FORCE=1
+export SYSTEMD_COLORS=1
+
 . $src
