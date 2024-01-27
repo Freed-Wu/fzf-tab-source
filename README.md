@@ -220,3 +220,9 @@ We cannot ensure any program (`eza`, etc) are installed in other machine
 display text.
 
 ![adb](https://user-images.githubusercontent.com/32936898/203727602-e33b617d-a218-435e-8f8a-585e7679857f.jpg)
+
+### Similar Project
+
+- [fifc](https://github.com/gazorby/fifc):
+  [fzf](https://github.com/junegunn/fzf) for
+  [fish](https://github.com/fish-shell/fish-shell)
