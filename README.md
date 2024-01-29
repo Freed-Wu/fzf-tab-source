@@ -79,8 +79,9 @@ _NOTE_: in some GNU/Linux distributions, it's `lesspipe.sh` or other names.
 
 [lesspipe](https://github.com/wofr06/lesspipe) is a script to select
 different tool for different kind of file.
-You can write your `~/.lessfilter` to customize
-lesspipe. For example:
+You can write your `~/.lessfilter` to
+[customize lesspipe](https://github.com/wofr06/lesspipe#9-user-defined-filtering).
+For example:
 
 [lesspipe selects `ls` to display
 a directory](https://github.com/wofr06/lesspipe/pull/107).
