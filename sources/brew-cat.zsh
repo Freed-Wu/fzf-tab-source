@@ -1,2 +1,2 @@
-# :fzf-tab:complete:brew-(edit|cat|test):argument-rest
+# :fzf-tab:complete:brew-(edit|cat|test):(cask|formula)-argument-rest
 brew cat $word | bat -lruby
