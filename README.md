@@ -45,14 +45,6 @@ source /the/directory/of/this/plugin/*.plugin.zsh
 
 **NOTE**: Don't source `*.zsh`! They will be sourced by `*.plugin.zsh` automatically.
 
-## Customize
-
-You can use your customized fzf-tab sources to override the default, such as:
-
-```zsh
-zstyle ':fzf-tab:sources' config-directory /the/directory/containing/your/source.zsh
-```
-
 ## Preview
 
 You need some optional tools:
@@ -222,6 +214,30 @@ We cannot ensure any program (`eza`, etc) are installed in other machine
 display text.
 
 ![adb](https://user-images.githubusercontent.com/32936898/203727602-e33b617d-a218-435e-8f8a-585e7679857f.jpg)
+
+## Customize
+
+### Sources
+
+```zsh
+zstyle ':fzf-tab:sources' config-directory /a/directory
+```
+
+You can use your customized fzf-tab sources to override
+[this plugin's sources](sources).
+`*.zsh` in `config-directory` are standalone zsh scripts which can be syntax
+highlighted by your editor:
+
+```zsh
+# :fzf-tab:complete:context --optional-fzf-option
+foobar $word
+```
+
+- Built-in commands and aliases should start with `(\\|)` to support `\command`
+- Commands should start with `(\\|*/|)` to support `=command`
+
+That is, `\command <TAB>`, `=command <TAB>` will get same preview windows as
+`command <TAB>`.
 
 ### Similar Project
 

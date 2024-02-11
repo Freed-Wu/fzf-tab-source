@@ -2,23 +2,22 @@
 0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
 0="${${(M)0:#/*}:-$PWD/$0}"
 
-# config
+local dir=${0:h} config_directory
 zstyle -s ':fzf-tab:sources' config-directory config_directory
-local sources=()
+local sources=($dir/sources/*.zsh)
+# use user's sources to override this plugin's sources
 if [[ -n $config_directory ]]; then
-  sources=($config_directory/**/*.zsh(.N))
+  sources+=($config_directory/**/*.zsh(.N))
 fi
 
 # https://github.com/Freed-Wu/fzf-tab-source/issues/11
 # enable $group
 zstyle ':completion:*:descriptions' format %d
 
-# use a standalone script to get syntax highlight
-# built-in commands and aliases should start with `(\\|)` to support `\command`
-# commands should start with `(\\|*/|)` to support `=command`
-local dir=${0:h} src line arr ctx flags
-for src in $dir/sources/*.zsh $sources; do
+local src line arr ctx flags
+for src in $sources; do
   while read -r line; do
+    # strip code to get magic comment
     arr=(${(@s. .)line##\# })
     ctx=${arr[1]}
     if [[ $ctx == ':fzf-tab:'* ]]; then
