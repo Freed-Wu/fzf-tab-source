@@ -61,7 +61,8 @@ You need some optional tools:
 - [pandoc](https://github.com/jgm/pandoc): convert any kind of file to
   markdown. Any generated cache file will be store in same
   `/tmp/zsh-fzf-tab-$USER` as [fzf-tab](https://github.com/Aloxaf/fzf-tab)
-- [mdcat](https://github.com/swsnr/mdcat): render markdown
+- render markdown: Refer
+  <https://github.com/foxfriends/paper-terminal#comparison-with-other-command-line-markdown-renderers>
 - [grc](https://github.com/garabik/grc): colorize the output of some commands
 - [less](https://github.com/vbwagner/less): a pager
 
