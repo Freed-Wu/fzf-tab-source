@@ -94,6 +94,9 @@ You can install some tools to view code, such as:
   [sublime syntax](https://www.sublimetext.com/docs/syntax.html)
 - [pygmentize](https://github.com/pygments/pygments): use python
 - [rouge](https://github.com/rouge-ruby/rouge): use ruby
+- [vimpager](https://github.com/rkitover/vimpager): use vim script
+- [nvimpager](https://github.com/lucc/nvimpager):
+  [use vim script](https://github.com/lucc/nvimpager/issues/63)
 
 ![text](https://user-images.githubusercontent.com/32936898/195970444-4220411d-5a11-4b60-a19f-a8839d827711.png)
 
