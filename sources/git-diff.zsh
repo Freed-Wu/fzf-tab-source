@@ -4,6 +4,6 @@ case $group in
   less ${realpath#--*=}
   ;;
 *)
-  git diff $word
+  git diff $realpath
   ;;
 esac

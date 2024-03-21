@@ -1,12 +1,12 @@
 # :fzf-tab:complete:git-checkout:argument-rest
 case $group in
 'modified file')
-  git diff $word
+  git diff $realpath
   ;;
 'recent commit object name')
-  git log --color=always $word | eval $(git config --global pager.diff || echo cat)
+  git diff --color=always $word
   ;;
 *)
-  git log --color=always $word
+  git log --color=always $realpath
   ;;
 esac
