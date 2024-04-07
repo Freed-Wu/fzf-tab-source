@@ -1,7 +1,7 @@
 # :fzf-tab:complete:(\\|*/|)bat:argument-rest
 case $group in
 subcommand)
-  bat cache --help | bat -lhelp
+  bat cache --help
   ;;
 *)
   [[ -f ${realpath#--*=} ]] && bat ${realpath#--*=} || less ${realpath#--*=}

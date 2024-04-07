@@ -1,2 +1,2 @@
 # :fzf-tab:complete:docker-image:argument-1
-docker image $word --help | bat -lhelp
+docker image $word --help

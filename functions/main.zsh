@@ -1,6 +1,7 @@
 # define some functions to avoid any error that these programs don't exist
 # treat bat -lXXX as cat
 # currently, only bat supports highlight --help
+alias -g -- "--help=\\--help | bat -lhelp"
 (($+commands[bat])) && bat() {command bat --color=always -p $@} || bat() {command cat}
 if ((! $+commands[mdcat])); then
   if (($+commands[paper])); then

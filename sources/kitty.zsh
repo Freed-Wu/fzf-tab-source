@@ -4,6 +4,6 @@ case $group in
   less =$word
   ;;
 '%BEntry points%b')
-  kitty $word --help | bat -lhelp
+  kitty $word --help
   ;;
 esac

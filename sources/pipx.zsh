@@ -1,2 +1,2 @@
 # :fzf-tab:complete:(\\|*/|)pipx:
-pipx $word --help | bat -lhelp
+pipx $word --help
