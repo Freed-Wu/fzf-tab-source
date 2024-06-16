@@ -27,8 +27,9 @@ function () {
     done < $src
     zstyle $ctx fzf-preview "src="\""$src"\"" . "\""$dir"\""/functions/main.zsh"
     flags=${arr[2]}
-    if [[ -n $flags ]]; then
-      zstyle $ctx fzf-flags $flags
-    fi
+    # https://github.com/Aloxaf/fzf-tab/issues/282
+    # https://github.com/junegunn/fzf/issues/2822
+    # $word = {2} make a wrong --preview-window=+{2}
+    zstyle $ctx fzf-flags ${flags:---preview-window=+0}
   done
 } $0
