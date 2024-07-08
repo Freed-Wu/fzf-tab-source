@@ -4,12 +4,10 @@
 
 function () {
   local dir=${1:h} config_directory
-  zstyle -s ':fzf-tab:sources' config-directory config_directory
   local sources=($dir/sources/*.zsh)
   # use user's sources to override this plugin's sources
-  if [[ -n $config_directory ]]; then
+  zstyle -s ':fzf-tab:sources' config-directory config_directory &&
     sources+=($config_directory/**/*.zsh(.N))
-  fi
 
   # https://github.com/Freed-Wu/fzf-tab-source/issues/11
   # enable $group
