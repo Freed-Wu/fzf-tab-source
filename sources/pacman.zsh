@@ -1,4 +1,4 @@
-# :fzf-tab:complete:(\\|*/|)(pacman|yay):(argument-(rest|1)|option-l-1)
+# :fzf-tab:complete:(\\|*/|)(pacman|paru|yay):(argument-(rest|1)|option-l-1)
 case $group in
 'package file')
   less $realpath
@@ -7,6 +7,12 @@ case $group in
   pacman -Qi $word | bat -lyaml
   ;;
 packages)
-  pacman -Si $word | bat -lyaml
+  if (($+commands[paru])); then
+    paru -Si $word | bat -lyaml
+  elif (($+commands[yay])); then
+    yay -Si $word | bat -lyaml
+  else
+    pacman -Si $word | bat -lyaml
+  fi
   ;;
 esac

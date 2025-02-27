@@ -1,2 +1,6 @@
 # :fzf-tab:user-expand::
-less $word
+case $group in
+expansions)
+  less $word
+  ;;
+esac
