@@ -16,6 +16,8 @@ if ((! $+commands[mdcat])); then
     mdcat() {command paper $@}
   elif (($+commands[mdless])); then
     mdcat() {command mdless $@}
+  elif (($+commands[glow])); then
+    mdcat() {command glow $@}
   else
     # use bat() as fallback
     mdcat() {bat -lmarkdown}
