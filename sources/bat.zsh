@@ -1,4 +1,4 @@
-# :fzf-tab:complete:(\\|*/|)bat:argument-rest
+# :fzf-tab:complete:(\\|*/|)bat(|cat):argument-rest
 case $group in
 subcommand)
   bat cache --help
