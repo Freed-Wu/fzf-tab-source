@@ -41,7 +41,7 @@ fi
 
 # use pager to process the output of git
 (($+commands[git])) && git() {
-    command git $@ | eval $(command git config pager.$1 || echo cat)
+    command git $@ | eval $(command git config pager.$1 || command git config core.pager || echo cat)
   }
 
 tmp_dir=${TMPPREFIX:-/tmp/zsh}-fzf-tab-$USER
