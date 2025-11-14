@@ -245,6 +245,13 @@ foobar $word
 That is, `\command <TAB>`, `=command <TAB>` will get same preview windows as
 `command <TAB>`.
 
+### Lazy Loading
+
+To keep shell startup fast, the plugin defers scanning `sources/*.zsh` until the
+first time the `fzf-tab-complete` widget runs. If you need the old eager
+registration (for example when profiling completions in non-interactive shells),
+set `FZF_TAB_SOURCE_EAGER=1` before sourcing the plugin.
+
 ### Similar Project
 
 - [fifc](https://github.com/gazorby/fifc):
