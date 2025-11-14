@@ -1,9 +1,9 @@
 # :fzf-tab:complete:git-(diff|cherry-pick):argument-rest
 case $group in
-'tree file')
+*'tree file')
   less ${realpath#--*=}
   ;;
 *)
-  git diff $realpath
+  git diff $word
   ;;
 esac
