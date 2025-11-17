@@ -1,2 +1,3 @@
 # :fzf-tab:complete:systemctl-show:*
-systemctl show $word | bat -lini
+service_mgr=${words[(R)(--user|--system)]:---system}
+systemctl $service_mgr show -- $word | bat -lini
