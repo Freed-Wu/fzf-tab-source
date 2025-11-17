@@ -2,5 +2,4 @@
 if [[ $OSTYPE == darwin* ]]; then
   alias -g -- --no-headers='| tail -n1'
 fi
-[[ $group == 'process ID' ]] &&
-  ps -p$word -wocommand --no-headers | bat -lsh
+[[ $group == 'process ID' ]] && ps -p$word -wocommand --no-headers | bat -lsh
