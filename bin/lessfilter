@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+has_cmd() {
+	for opt in "$@"; do
+		if command -v "$opt" >/dev/null; then
+			continue
+		else
+			return $?
+		fi
+	done
+}
+
+mime=$(file -Lbs --mime-type "$1")
+case "$mime" in
+# https://github.com/wofr06/lesspipe/pull/107
+inode/directory)
+	if has_cmd eza; then
+		eza -hl --git --color=always --icons "$1"
+	elif has_cmd exa; then
+		exa -hl --color=always --icons "$1"
+	else
+		exit 1
+	fi
+	;;
+# https://github.com/wofr06/lesspipe/pull/117
+text/* | application/javascript | inode/x-empty)
+	if has_cmd bat; then
+		bat --color=always "$1"
+	elif has_cmd pygmentize; then
+		pygmentize "$1" | less
+	else
+		exit 1
+	fi
+	;;
+# https://github.com/wofr06/lesspipe/pull/115
+application/rfc822)
+	if has_cmd bat; then
+		bat --color=always -lEmail "$1"
+	else
+		exit 1
+	fi
+	;;
+# https://github.com/wofr06/lesspipe/pull/110
+application/pdf)
+	if has_cmd pdftotext sed; then
+		pdftotext -q "$1" - | sed "s/\f/$(hr ─)\n/g"
+	else
+		exit 1
+	fi
+	;;
+application/json)
+	if has_cmd jupyter bat && [[ "$1" == *.ipynb ]]; then
+		jupyter nbconvert --to python --stdout "$1" | bat --color=always -plpython
+	elif has_cmd jq; then
+		jq -Cr . "$1"
+	else
+		exit 1
+	fi
+	;;
+# https://github.com/wofr06/lesspipe/pull/106
+image/*)
+	if has_cmd chafa; then
+		chafa -f symbols "$1"
+	fi
+	if has_cmd exiftool; then
+		exiftool "$1" | bat --color=always -plyaml
+	else
+		exit 1
+	fi
+	;;
+application/vnd.sqlite3)
+	if has_cmd yes sqlite3 bat; then
+		yes .q | sqlite3 "$1" | bat --color=always -plsql
+	else
+		exit 1
+	fi
+	;;
+application/zip)
+	if has_cmd python && [[ "$1" == *.pth ]]; then
+		python <<EOF
+import torch
+
+data = torch.load("$1")
+if isinstance(data, torch.Tensor):
+    print(data.shape)
+print(data)
+EOF
+	else
+		exit 1
+	fi
+	;;
+application/octet-stream)
+	if has_cmd python && [[ "$1" == *data.mdb ]]; then
+		python <<EOF
+from os.path import dirname as dirn
+import lmdb
+
+with lmdb.open(dirn("$1")) as env, env.begin() as txn:
+    for key, val in txn.cursor():
+        print(key.decode())
+EOF
+	elif has_cmd python && [[ "$1" == *events.out.tfevents.* ]]; then
+		python <<EOF
+from contextlib import suppress
+import sys
+from time import gmtime, strftime
+
+import pandas as pd
+import plotext as plt
+from tensorboard.backend.event_processing.event_file_loader import (
+    EventFileLoader,
+)
+
+file = "$1"
+df = pd.DataFrame(columns=["Step", "Value"])
+df.index.name = "YYYY-mm-dd HH:MM:SS"
+
+for event in EventFileLoader(file).Load():
+    with suppress(IndexError):
+        df.loc[strftime("%F %H:%M:%S", gmtime(event.wall_time))] = [  # type: ignore
+            event.step,  # type: ignore
+            event.summary.value[0].tensor.float_val[0],  # type: ignore
+        ]
+df.index = pd.to_datetime(df.index)  # type: ignore
+df.Step = df.Step.astype(int)
+plt.plot(df.Step, df.Value, marker="braille")
+plt.title(event.summary.value[0].metadata.display_name)  # type: ignore
+plt.clc()
+plt.show()
+df.to_csv(sys.stdout, "\t")
+EOF
+	else
+		exit 1
+	fi
+	;;
+*)
+	exit 1
+	;;
+esac
