@@ -14,7 +14,7 @@ case "$mime" in
 # https://github.com/wofr06/lesspipe/pull/107
 inode/directory)
 	if has_cmd eza; then
-		eza -hl --git --color=always --icons "$1"
+		eza -hl --git --color=always --icons=always "$1"
 	elif has_cmd exa; then
 		exa -hl --color=always --icons "$1"
 	else
